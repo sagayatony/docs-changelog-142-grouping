@@ -4,20 +4,14 @@
 
 ### Added
 
-- Added a bounded HNSW inner-product benchmark summary for immutable and
-  durable/opened read-only `HnswIndex` search.
-- Added compact README first-use examples for HNSW squared-L2, cosine, and
-  inner-product search.
-
+- Added deterministic logical contentDigest metadata to newly written exact-flat and HNSW durable manifests while preserving supported reads of earlier stable 1.x manifests that do not contain the field.
+  
 ### Changed
 
-- Expanded README and XML inner-product wording to clarify raw-vector,
-  magnitude-sensitive ranking, zero-vector validity, negative-dot distances,
-  and cosine as the direction-only metric.
-- Optimized inner-product distance evaluation for exact-flat, immutable HNSW
-  and mutable HNSW through a shared SIMD-aware dot-product path while
-  preserving VecNet's canonical negative-dot distance ordering.
-  
+- Documented VecNet's cosine distance policy as canonical [0,2] distance with tolerated floating-point excursions up to 1e-6 below zero or above
+
+- Corrected HNSW EnsureCapacity wording to describe preserved logical durable contents, counts, search behavior, and durable compatibility rather than byte-identical physical output.
+    
 ## 1.4.1 - 2026-08-23
 
 ### Added
